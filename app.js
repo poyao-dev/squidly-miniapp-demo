@@ -27,7 +27,7 @@ class SquidlyDemoApp {
     // add a wrapper element "access-button"
     this.accessCounterButton = document.createElement("access-button");
     this.accessCounterButton.addEventListener("access-click", () => {
-      this.incrementCounter();
+      this.updateCounter(1);
     });
     this.accessCounterButton.appendChild(this.counterButton);
     container.appendChild(this.accessCounterButton);
@@ -68,14 +68,8 @@ class SquidlyDemoApp {
     );
   }
 
-  incrementCounter() {
-    // this.counter++;
-    SquidlyAPI.firebaseSet("counter", this.counter + 1);
-  }
-
-  decrementCounter() {
-    // this.counter--;
-    SquidlyAPI.firebaseSet("counter", this.counter - 1);
+  updateCounter(delta) {
+    SquidlyAPI.firebaseSet("counter", this.counter + delta);
   }
 
   get counter() {
